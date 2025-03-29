@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  spring-app-configuration:
+    container_name: spring-app-configuration
+    build:
+      context: ./spring-app-configuration
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://spring-app-eureka:8080/eureka"
+    volumes:
+      - ./configuration:/var/spring-app-configuration/configuration
+
+  spring-app-eureka:
+    container_name: spring-app-eureka
+    build:
+      context: ./spring-app-eureka
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8084:8080"
+
+  instruments-db:
+    image: postgres:16.1
+    container_name: instruments-db
+    restart: always
+    environment:
+      POSTGRES_DB: "instruments_db"
+      POSTGRES_USER: "instruments_user"
+      POSTGRES_PASSWORD: "instruments_password"
+    volumes:
+      - ./instruments-db-data:/var/lib/postgresql/data
+
+  categories-db:
+    image: postgres:16.1
+    container_name: categories-db
+    restart: always
+    environment:
+      POSTGRES_DB: "categories_db"
+      POSTGRES_USER: "categories_user"
+      POSTGRES_PASSWORD: "categories_password"
+    volumes:
+      - ./categories-db-data:/var/lib/postgresql/data
+
+  spring-app-instruments-1:
+    container_name: spring-app-instruments-1
+    build:
+      context: ./spring-app-instruments
+      dockerfile: Dockerfile
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
+      EUREKA_INSTANCE_INSTANCE_ID: "1"
+    restart: always
+
+  spring-app-instruments-2:
+    container_name: spring-app-instruments-2
+    build:
+      context: ./spring-app-instruments
+      dockerfile: Dockerfile
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
+      EUREKA_INSTANCE_INSTANCE_ID: "2"
+    restart: always
+
+  spring-app-categories:
+    container_name: spring-app-categories
+    build:
+      context: ./spring-app-categories
+      dockerfile: Dockerfile
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
+    restart: always
+
+  spring-app-gateway:
+    container_name: spring-app-gateway
+    build:
+      context: ./spring-app-gateway
+      dockerfile: Dockerfile
+    environment:
+      GATEWAY_HOST: "spring-app-gateway:8080"
+      SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
+    restart: always
+
+  spring-app-angular:
+    container_name: spring-app-angular
+    build:
+      context: ./spring-app-angular
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      API_URL: http://spring-app-gateway:8080/api
+    ports:
+      - "8086:80"

@@ -1,0 +1,60 @@
+### 1. GET /api/instruments
+GET /api/instruments
+Host: localhost:8083
+Accept: application/json
+
+### 2. GET /api/instruments/{id}
+GET /api/instruments/d13b6b91-cb61-4ae6-b8b0-c86a7c8d515f
+Host: localhost:8083
+Accept: application/json
+
+### 3. GET /api/instruments/category/{id}
+GET /api/instruments/category/e6a148d1-90a3-4fb3-8f6e-7885cd24e8ae
+Host: localhost:8083
+Accept: application/json
+
+### 4. PUT /api/instruments/{id}
+PUT /api/instruments/d13b6b91-cb61-4ae6-b8b0-c86a7c8d515f
+Host: localhost:8083
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Clarinet",
+  "description": "Clarinet",
+  "category": "e6a148d1-90a3-4fb3-8f6e-7885cd24e8ae"
+}
+
+### 5. DELETE /api/instruments/{id}
+DELETE /api/instruments/d13b6b91-cb61-4ae6-b8b0-c86a7c8d515f
+Host: localhost:8083
+Accept: application/json
+
+
+
+
+### 1. GET /api/categories
+GET /api/categories
+Host: localhost:8083
+Accept: application/json
+
+### 2. GET /api/categories/{id}
+GET /api/categories/e6a148d1-90a3-4fb3-8f6e-7885cd24e8ae
+Host: localhost:8083
+Accept: application/json
+
+### 3. PUT /api/categories/{id}
+PUT /api/categories/e6a148d1-90a3-4fb3-8f6e-7885cd24e8ae
+Host: localhost:8083
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Clarinet",
+  "description": "Clarinet"
+}
+
+### 4. DELETE /api/categories/{id}
+DELETE /api/categories/e6a148d1-90a3-4fb3-8f6e-7885cd24e8ae
+Host: localhost:8083
+Accept: application/json

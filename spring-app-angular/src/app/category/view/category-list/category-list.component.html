@@ -1,0 +1,35 @@
+<article class="text--justified">
+  <header><h2>Categories</h2></header>
+
+  <table *ngIf="categories">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let category of categories.categories">
+      <td>{{category.name}}</td>
+      <td>
+        <a [routerLink]="['/categories', category.uuid]">View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/categories', category.uuid, 'edit']">Edit</a>
+      </td>
+      <td>
+        <button (click)="onDelete(category)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button [routerLink]="['/categories', '', 'edit']">
+      Add New Category
+    </button>
+  </div>
+</article>
+

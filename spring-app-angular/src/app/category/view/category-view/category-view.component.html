@@ -1,0 +1,22 @@
+<article *ngIf="category">
+  <header><h2>{{category.name}}</h2></header>
+
+  <div class="container">
+    <div class="row">
+
+
+        <div class="row mb-2">
+          <div class="col-6">
+            Description:
+          </div>
+          <div class="col-6">
+            <span>{{category.description}}</span>
+          </div>
+        </div>
+
+      <app-instrument-list [categoryUuid]="category.uuid"></app-instrument-list>
+
+    </div>
+  </div>
+</article>
+
