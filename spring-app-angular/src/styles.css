@@ -1,1 +1,187 @@
-/* You can add global styles to this file, and also import other style files */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+main {
+  padding: 20px;
+}
+
+nav {
+  background-color: #6200ea;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav div ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav div ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav div ul li a:hover {
+  background-color: #3700b3;
+}
+
+router-outlet {
+  display: block;
+  margin-top: 20px;
+}
+
+/* Article Styles */
+article {
+  margin-bottom: 20px;
+}
+
+article header h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #6200ea;
+}
+
+.text--justified {
+  text-align: justify;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #6200ea;
+  color: white;
+}
+
+table td a, table td button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+table td a {
+  background-color: #6200ea;
+}
+
+table td a:hover {
+  background-color: #3700b3;
+}
+
+table td button {
+  background-color: #ff5722;
+  border: none;
+  cursor: pointer;
+}
+
+table td button:hover {
+  background-color: #e64a19;
+}
+
+/* Button for Add New Instrument */
+button {
+  background-color: #6200ea;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #3700b3;
+}
+
+/* Form Styles */
+form .row {
+  margin-bottom: 10px;
+}
+
+form .col-4 {
+  padding: 0 10px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #6200ea;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #3700b3;
+}
+
+form .col-2 button {
+  width: 100%;
+}
+
+/* Container for Detailed View */
+.container {
+  margin-top: 20px;
+}
+
+.row.mb-2 {
+  margin-bottom: 10px;
+}
+
+.col-6 {
+  padding: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav div ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .col-4 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

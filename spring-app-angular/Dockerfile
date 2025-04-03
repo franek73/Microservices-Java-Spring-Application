@@ -6,5 +6,5 @@ ENV API_URL http://localhost:8080/api
 
 EXPOSE 80
 
-ADD dist/spring-app-angular/browser /usr/share/nginx/html/
+ADD dist/lab-views/browser /usr/share/nginx/html/
 ADD docker/etc/nginx/templates/ /etc/nginx/templates/

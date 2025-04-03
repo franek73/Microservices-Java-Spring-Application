@@ -11,6 +11,8 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://spring-app-eureka:8080/eureka"
     volumes:
       - ./configuration:/var/spring-app-configuration/configuration
+    depends_on:
+      - spring-app-eureka
 
   spring-app-eureka:
     container_name: spring-app-eureka
@@ -52,6 +54,9 @@ services:
       SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
       EUREKA_INSTANCE_INSTANCE_ID: "1"
     restart: always
+    depends_on:
+      - instruments-db
+      - spring-app-eureka
 
   spring-app-instruments-2:
     container_name: spring-app-instruments-2
@@ -62,6 +67,9 @@ services:
       SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
       EUREKA_INSTANCE_INSTANCE_ID: "2"
     restart: always
+    depends_on:
+      - instruments-db
+      - spring-app-eureka
 
   spring-app-categories:
     container_name: spring-app-categories
@@ -71,6 +79,9 @@ services:
     environment:
       SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
     restart: always
+    depends_on:
+      - categories-db
+      - spring-app-eureka
 
   spring-app-gateway:
     container_name: spring-app-gateway
@@ -81,6 +92,8 @@ services:
       GATEWAY_HOST: "spring-app-gateway:8080"
       SPRING_CONFIG_IMPORT: "configserver:http://spring-app-configuration:8080"
     restart: always
+    depends_on:
+      - spring-app-eureka
 
   spring-app-angular:
     container_name: spring-app-angular
@@ -92,3 +105,5 @@ services:
       API_URL: http://spring-app-gateway:8080/api
     ports:
       - "8086:80"
+    depends_on:
+      - spring-app-gateway
