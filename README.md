@@ -1,4 +1,4 @@
-# Instruments website
+# Instruments Manager
 
 This repository contains a Java Spring microservices web application for managing musical instruments, developed as part of the **Architektura Usług Internetowych** course. The application is containerized with Docker for easier deployment.
 
