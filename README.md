@@ -24,6 +24,8 @@ To build the project, run:
 mvn clean package
 ```
 
+## Running
+
 To run the application using the embedded Apache Tomcat server, execute:
 
 ```bash
